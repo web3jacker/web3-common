@@ -1,0 +1,73 @@
+{
+  "name": "zksync-cli",
+  "type": "module",
+  "version": "0.0.0-development",
+  "description": "CLI tool that simplifies the process of developing applications and interacting with the zkSync network",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/matter-labs/zksync-cli.git"
+  },
+  "main": "bin/index.js",
+  "bin": {
+    "zksync-cli": "bin/index.js"
+  },
+  "exports": {
+    "./lib": "./bin/lib/index.js"
+  },
+  "scripts": {
+    "build": "cross-env NODE_ENV=development tsc -p tsconfig.build.json",
+    "dev": "ts-node-esm src/index.ts",
+    "typecheck": "tsc -p . --noEmit",
+    "lint": "eslint . --ext ./src/* --fix --ignore-path .gitignore --no-error-on-unmatched-pattern --max-warnings=0",
+    "commitlint": "commitlint --edit"
+  },
+  "keywords": [
+    "zksync",
+    "era",
+    "cli"
+  ],
+  "author": "Matter Labs",
+  "license": "MIT",
+  "prettier": "@matterlabs/prettier-config",
+  "lint-staged": {
+    "./src/*": "npm run lint",
+    "**/*.ts": "tsc-files --noEmit"
+  },
+  "dependencies": {
+    "chalk": "4.1.2",
+    "commander": "^11.0.0",
+    "compare-versions": "^6.1.0",
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.3.1",
+    "ethers": "5.7.2",
+    "inquirer": "^8.1.4",
+    "winston": "^3.10.0",
+    "zkcli-block-explorer": "^1.0.2",
+    "zkcli-dockerized-node": "^1.0.4",
+    "zkcli-in-memory-node": "^1.0.3",
+    "zkcli-portal": "^1.0.1",
+    "zksync-web3": "^0.14.4"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^17.7.1",
+    "@commitlint/config-conventional": "^17.7.0",
+    "@matterlabs/eslint-config-typescript": "^1.1.2",
+    "@matterlabs/prettier-config": "^1.0.3",
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/commit-analyzer": "^9.0.2",
+    "@semantic-release/github": "^8.1.0",
+    "@semantic-release/npm": "^8.0.3",
+    "@semantic-release/release-notes-generator": "^10.0.3",
+    "@types/inquirer": "^8.0.2",
+    "@types/node": "^18.17.12",
+    "husky": "^8.0.3",
+    "lint-staged": "^14.0.1",
+    "semantic-release": "^18.0.1",
+    "ts-node": "^10.9.1",
+    "tsc-files": "^1.1.4",
+    "typescript": "^5.2.2"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
